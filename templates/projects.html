@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="featured-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h1>Featured Items</h1>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+<div class="featured container no-gutter">
+
+    <div class="row posts">
+      {% for project in projects %}
+        <div id="1" class="item new col-md-4">
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img style = "height: 212px;" src="{{ project.img }}" alt="">
+              <h4>{{ project.title }}</h4>
+              <h6><a href="{% url 'project_details' project.id %}">Details</a></h6>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% if projects.has_other_pages %}
+<div class="page-navigation">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul>
+            {% if projects.has_previous %}
+            <li class="current-page"><a href="?page={{ projects.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+                {% for i in projects.paginator.page_range %}
+                {% if projects.number == i %}
+                    <li class="current-page"><a>{{ i }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if projects.has_next %}
+                  <li><a href="?page={{ projects.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+              {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}

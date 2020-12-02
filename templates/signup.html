@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                {% if message %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                  </div>
+                {% endif %}
+                <form method = "POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit", class="btn btn-primary">SignUp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

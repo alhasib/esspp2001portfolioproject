@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="about-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h1>About Us</h1>
+          </div>
+        </div>
+        <div class="col-md-6">
+            {% for about in about_me %}
+            <div class="left-image">
+              <img src="{{ about.my_photo.url }}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+          <div class="right-content">
+            <h4>About Me</h4>
+            
+            {% for about in about_me %}
+            <p>{{ about.about_me }}</p>
+            
+    
+            <div class="share">
+              <h6>Find us on: <span><a href="{{ about.fb_link }}" target="blank"><i class="fa fa-facebook"></i></a><a href="{{ about.li_link }}" target="blank"><i class="fa fa-linkedin"></i></a><a href="{{ about.t_link }}" target="blank"><i class="fa fa-twitter"></i></a></span></h6>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

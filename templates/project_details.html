@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="about-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h1>{{ project.title }}</h1>
+          </div>
+        </div>
+        <div class="col-md-6">
+            
+            <div class="left-image">
+              <img src="{{ project.image.url }}" alt="">
+            </div>
+        
+        </div>
+        <div class="col-md-6">
+          <div class="right-content">
+            
+            <p>{{ project.description }}</p>
+            <Strong>Tools Used:</Strong>{{ project.technology }}
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}
